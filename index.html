@@ -5,173 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mahadev Blessings</title>
 
+<meta name="description" content="Check how much Mahadev loves you. Get your blessing percentage and share with friends. Har Har Mahadev!">
+<meta name="keywords" content="Mahadev love calculator, Shiva blessing, Har Har Mahadev, spiritual blessing checker">
+<meta name="author" content="Mahadev Blessings">
+<meta property="og:title" content="Mahadev Blessings - Check Your Divine Love %">
+<meta property="og:description" content="See how much Mahadev loves you and share your blessing!">
+<meta property="og:type" content="website">
+
 <style>
-/* Background Image aur Layout */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    /* Yahan apni image URL change kar sakte hain */
-    background: url('https://images.unsplash.com/photo-1635349420017-ec32988390b1?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    background:linear-gradient(to right,#000428,#004e92);
+    color:white;
 }
 
-/* Glassmorphism Effect: Front page blur yahan se ho raha hai */
-.glass-container {
-    background: rgba(0, 0, 0, 0.45); /* Transparent black */
-    backdrop-filter: blur(12px);    /* Piche ka content blur karega */
-    -webkit-backdrop-filter: blur(12px);
-    padding: 30px;
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    width: 90%;
-    max-width: 380px;
+.top-popup{
+    background:#ff9800;
+    padding:10px;
+    font-weight:bold;
 }
 
-.top-popup {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #ff9800;
-    padding: 10px 0;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+.container{
+    margin-top:60px;
 }
 
-h1 { font-size: 26px; margin-bottom: 5px; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-
-input {
-    padding: 12px;
-    width: 85%;
-    border-radius: 30px;
-    border: none;
-    margin: 20px 0;
-    text-align: center;
-    font-size: 16px;
-    outline: none;
+input{
+    padding:10px;
+    width:250px;
+    border-radius:8px;
+    border:none;
+    margin:10px;
 }
 
-.btn-check {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff5722, #ff9800);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    width: 90%;
-    font-size: 16px;
-    transition: 0.3s;
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#ff5722;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.btn-whatsapp {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 30px;
-    background: #25D366; /* WhatsApp Green */
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    width: 90%;
-    display: none; /* Result aane par show hoga */
-    text-decoration: none;
-    font-size: 15px;
-    transition: 0.3s;
+/* WhatsApp Button Style */
+.wa-btn{
+    background:#25D366;
+    margin-top:15px;
+    display:none; /* Sirf result ke baad dikhega */
 }
 
-.result-box {
-    margin: 20px 0;
-    font-size: 45px;
-    font-weight: 900;
-    color: #ffd700;
+.result-box{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+    box-shadow: 0 0 25px rgba(255,215,0,0.5);
+    padding:15px;
+    border-radius:12px;
 }
 
-.visitor {
-    margin-top: 20px;
-    font-size: 12px;
-    background: rgba(0,0,0,0.3);
-    padding: 5px 15px;
-    border-radius: 20px;
-    display: inline-block;
+.visitor{
+    margin-top:40px;
+    font-size:14px;
+    opacity:0.8;
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-popup">🔱 Divine Blessing for Shiv Bhakts 🙏</div>
+<div class="top-popup">🔱 Share this divine blessing with your loved ones 🙏</div>
 
-<div class="glass-container">
+<div class="container">
     <h1>🔱 Mahadev Blessings 🔱</h1>
-    <p style="font-size: 14px; opacity: 0.9;">See how much Mahadev loves you!</p>
 
     <input type="text" id="name" placeholder="Enter Your Name">
     <br>
-    <button class="btn-check" onclick="calculateLove()">Bless Me! 🔱</button>
+    <button onclick="calculateLove()">Check Blessing %</button>
 
-    <div class="result-box">
+    <div class="result-box" id="result">
         <span id="finalPercent">0%</span>
     </div>
 
-    <button id="waBtn" class="btn-whatsapp" onclick="shareWhatsApp()">
-        🚩 Share Blessing on WhatsApp
-    </button>
+    <button id="waShare" class="wa-btn" onclick="shareWhatsApp()">🚩 Share on WhatsApp</button>
 
     <div class="visitor">
-        Devotees Online: <span id="count">1008</span>
+        Visitors: <span id="count">1008</span>
     </div>
 </div>
 
 <script>
-// Visitor Counter Logic
+
+// Auto Visitor Counter
 let base = 1008;
-setInterval(() => {
-    base += Math.floor(Math.random() * 3);
+setInterval(()=>{
+    base += Math.floor(Math.random()*3);
     document.getElementById("count").innerText = base.toLocaleString();
-}, 3000);
+},3000);
 
-let intervalId = null;
-
-function calculateLove() {
+function calculateLove(){
     let name = document.getElementById("name").value;
-    if (name.trim() == "") {
-        alert("Please enter your name first!");
+    if(name.trim()==""){
+        alert("Please enter your name");
         return;
     }
 
-    if(intervalId) clearInterval(intervalId);
+    let loveNum = Math.floor(Math.random()*6)+95;
 
-    // Always between 96% and 100%
-    let loveNum = Math.floor(Math.random() * 5) + 96;
     let count = 0;
-    
-    intervalId = setInterval(() => {
+    let interval = setInterval(()=>{
         count++;
         document.getElementById("finalPercent").innerText = count + "%";
-        if (count >= loveNum) {
-            clearInterval(intervalId);
-            // Show WhatsApp button
-            document.getElementById("waBtn").style.display = "inline-block";
+        if(count >= loveNum){
+            clearInterval(interval);
+            // Result ke baad WhatsApp button dikhayein
+            document.getElementById("waShare").style.display = "inline-block";
         }
-    }, 25);
+    },25);
 }
 
-function shareWhatsApp() {
+// Updated Share Function with Name
+function shareWhatsApp(){
     let name = document.getElementById("name").value;
     let percent = document.getElementById("finalPercent").innerText;
-    let text = `🔱 *Mahadev Blessings* 🔱\n\nJai Bholenath! Maine check kiya ki Mahadev mujhe *${percent}* pyaar karte hain. ❤️\n\nAap bhi apna blessing check karein yahan: `;
+    let text = "🔱 *" + name + "* ne check kiya ki Mahadev unhe *" + percent + "* pyaar karte hain! 🙏 Aap bhi check karein:";
     let url = window.location.href;
-    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text + "\n👉 " + url));
+    window.open("https://wa.me/?text=" + encodeURIComponent(text + " " + url));
 }
+
 </script>
 
 </body>
-</html>
+                                                          </html>
+                                                          
