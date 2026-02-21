@@ -25,8 +25,6 @@
             z-index: -2;
         }
 
-        /* No more black overlay or blur here */
-
         .main {
             display: flex; 
             flex-direction: column;
@@ -35,12 +33,11 @@
             min-height: 100vh; 
             text-align: center; 
             padding: 60px 20px;
-            /* Yahan se blur hata diya gaya hai */
         }
 
         .spiritual-icon {
             position: absolute;
-            color: rgba(255, 204, 0, 0.6); /* Icons ko thoda aur visible kiya */
+            color: rgba(255, 204, 0, 0.6); 
             font-size: 2.5rem;
             z-index: -1;
             animation: float 12s linear infinite;
@@ -74,9 +71,8 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8), 0 0 15px #ffaa00; 
         }
 
-        /* Capture Area with minimal background for readability */
         #captureArea {
-            background: rgba(0, 0, 0, 0.2); /* Bilkul halka shadow taaki text padha ja sake */
+            background: rgba(0, 0, 0, 0.2); 
             padding: 40px 20px; 
             border-radius: 30px;
             width: 100%; 
@@ -99,10 +95,28 @@
 
         .percentage { font-size: 4.5rem; color: #ffd700; font-weight: 900; text-shadow: 2px 2px 10px #000; }
 
-        .share-row { margin-top: 20px; }
-        .btn-s { text-decoration: none; color: white; padding: 12px 25px; border-radius: 50px; margin: 5px; font-weight: bold; display: inline-block; }
-        .wa { background: #25D366; }
-        .dl { background: #fff; color: #000; }
+        /* BUTTON EXCHANGE STYLING */
+        .share-row { 
+            margin-top: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-s { 
+            text-decoration: none; 
+            color: white; 
+            padding: 15px 40px; 
+            border-radius: 50px; 
+            margin: 8px 0; 
+            font-weight: bold; 
+            width: 250px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .wa { background: #25D366; font-size: 1.1rem; } /* Bada WhatsApp Button */
+        .dl { background: #fff; color: #000; font-size: 0.9rem; border: none; cursor: pointer;} /* Chhota Save Button */
     </style>
 </head>
 
@@ -133,8 +147,8 @@
         <button class="btn-main" id="checkBtn" onclick="calculateLove()">Check Love %</button>
 
         <div class="share-row" id="shareSection" style="display:none;">
-            <button class="btn-s dl" onclick="downloadImage()">⬇️ Save Status</button> <br>
-            <a href="#" id="waLink" class="btn-s wa">WhatsApp Share</a>
+            <a href="#" id="waLink" class="btn-s wa">🚩 WhatsApp Share</a>
+            <button class="btn-s dl" onclick="downloadImage()">⬇️ Save Status Image</button>
         </div>
     </div>
 
@@ -160,7 +174,7 @@
             document.getElementById('finalName').innerText = name;
             document.getElementById('finalPercent').innerText = loveNum + "%";
             document.getElementById('res').style.display = "block";
-            document.getElementById('shareSection').style.display = "block";
+            document.getElementById('shareSection').style.display = "flex";
 
             const siteUrl = window.location.href;
             const msg = `🔱 *Mahadev Blessings* 🔱\n\nJai Bholenath! *${name}* ne check kiya ki Mahadev unhe *${loveNum}%* pyaar karte hain! 🙏✨\n\nAap bhi check karein:\n👉 ${siteUrl}`;
@@ -171,11 +185,12 @@
             const container = document.getElementById("captureArea");
             html2canvas(container, { backgroundColor: null, scale: 2 }).then(canvas => {
                 const link = document.createElement("a");
-                link.download = `${document.getElementById('uName').value}_Blessing.png`;
+                link.download = `Mahadev_Blessing.png`;
                 link.href = canvas.toDataURL();
                 link.click();
             });
         }
     </script>
 </body>
-</html>
+        </html>
+        
